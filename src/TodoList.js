@@ -9,7 +9,11 @@ function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
   if (todos.length) return (
     <Paper>
       <List>
-        {todos.map((todo, i) => (
+        {todos.sort((a, b) => {
+          if (a.task[1] < b.task[1]) return -1;
+          if (a.task[1] > b.task[1]) return 1;
+          return 0;
+        }).map((todo, i) => (
           <>
             <Todo
               {...todo} 
